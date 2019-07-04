@@ -8,13 +8,6 @@ function preload()
 	hud = loadImage("tiles/hud.png");
 	cursorimg = loadImage("tiles/cursor.png");
 	marker = loadImage("tiles/marker.png")
-	inventory = [0,0,0,0,0,0,0,0,0,0]
-
-	// for (i=0;i<=4;i++)
-	// {
-	// 	tile.push(loadImage("tiles/tile"+i+".png"));	
-	// }
-
 
 }
 
@@ -58,7 +51,11 @@ function setup()
 	copperOreRepetition = 5;
 	copperOreCount = 5;
 	Miners = [];
-	Items= [];
+	Items = [];
+	inventory = [1,2,3,3,4,5,6,0,1,1];
+	inventorySelect = 1;
+	rotate = 0;
+	acceptedRotateValues = [2]
 
 	// setting up the map //
 
@@ -249,13 +246,17 @@ function draw()
 	}
 	for (i=0;i<Items.length;i++)
 	{
-		Items[i].draw()	
+		Items[i].draw()
+		Items[i].update()
 	}
 
 	image(hud,269-offX,579-offY)
-	image(item[2],mouseX-offX,mouseY-offY)
+	image(item[inventory[inventorySelect]+rotate],mouseX-offX,mouseY-offY)
 	//image(cursor,mouseX-offX,mouseY-offY)
 	image(marker,floor((mouseX-offX)/32)*32,floor((mouseY-offY)/32)*32)
+
+	showInventory();
+
 
 
 	// debug

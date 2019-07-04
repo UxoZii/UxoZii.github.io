@@ -16,7 +16,5 @@ function drawMap(tilemap)
 
 function mousePressed()
 {
-	//tilemap[posY+10][posX+13] = 0
 	tilemap[posY+floor((mouseY-offY)/32)][posX+floor((mouseX-offX)/32)] = 2
-	//Miners.push(new Miner(posY+10,posX+13,"lol"))
 }
